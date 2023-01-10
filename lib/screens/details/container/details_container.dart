@@ -7,10 +7,9 @@ import 'package:flutter_pokedex_app/common/widgets/loading_screen.dart';
 import 'package:flutter_pokedex_app/screens/details/pages/details_screen.dart';
 
 class DetailsArguments {
-  final String name;
-  final String image;
+  final Pokemon pokemon;
 
-  DetailsArguments({required this.name, required this.image});
+  DetailsArguments({required this.pokemon});
 }
 
 class DetailsContainer extends StatelessWidget {
@@ -29,7 +28,7 @@ class DetailsContainer extends StatelessWidget {
         }
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
-          return DetailsScreen(name: arguments.name, image: arguments.image,);
+          return DetailsScreen(pokemon: arguments.pokemon);
         }
         if (snapshot.hasError) {
           return ErrorScreen(error: (snapshot.error as Failure).message!);
